@@ -1,11 +1,6 @@
 import React from 'react'
 import ReactDOMServer from 'react-dom/server'
-
-class Hello extends React.Component {
-    render() {
-        return <div>Hello {this.props.name}!</div>;
-    }
-}
+import {Hello} from './Hello.html.jsx'
 
 let test = <Hello name="World"/>;
 
