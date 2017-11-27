@@ -25,7 +25,7 @@ module.exports = {
                 test: /\.html\.jsx$/,
                 exclude: /(node_modules|bower_components)/,
                 use: {
-                        loader: './loader/stateless-jsx-loader'
+                        loader: '../loader/stateless-jsx-loader'
                     }
             }
         ]
