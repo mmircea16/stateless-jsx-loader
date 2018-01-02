@@ -1,8 +1,11 @@
-var fs = require('fs');
-var path = require('path');
+const fs = require('fs');
+const path = require('path');
+const loaderUtils = require('loader-utils');
 
 module.exports = function (content) {
-    let class_template = fs.readFileSync(path.resolve(__dirname, 'component-template.jsx'), 'utf-8');
+    let classTemplate = fs.readFileSync(path.resolve(__dirname, 'component-template.jsx'), 'utf-8');
 
-    return class_template.replace("$$jsx_content$$", content).replace("$$class_name$$", "Hello");
+    let name = loaderUtils.interpolateName(this, "[name]", {});
+    name = name.replace('.html', '');
+    return classTemplate.replace("$$jsx_content$$", content).replace("$$class_name$$", name);
 };

@@ -1,8 +1,8 @@
 import React from 'react'
 import ReactDOMServer from 'react-dom/server'
-import {Hello} from './Hello.html.jsx'
+import {Hey} from './Hey.html.jsx'
 
-let test = <Hello name="World"/>;
+let test = <Hey name="World"/>;
 
 let result = ReactDOMServer.renderToStaticMarkup(test);
 
