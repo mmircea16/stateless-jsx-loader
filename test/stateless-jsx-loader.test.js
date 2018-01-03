@@ -1,5 +1,6 @@
 import loader from '../loader/stateless-jsx-loader';
-import fillTemplate from '../loader/jsx-stateless'
+import fillTemplate from '../loader/jsx-stateless';
+import getFileName from '../loader/utils';
 
 test('should compile a simple Hello World', () => {
     let mockContext = {
@@ -25,4 +26,12 @@ test('should compile a simple Hello World', () => {
 test('should interpolate name and content', () => {
     let result = fillTemplate("Name: $$class_name$$, Content: $$jsx_content$$", "Planet", "This is planet Earth");
     expect(result).toBe("Name: Planet, Content: This is planet Earth")
+});
+
+test('should retrieve the file name without extensions', () => {
+    let mockContext = {
+        resourcePath: "./List.html.jsx"
+    };
+
+    expect(getFileName(mockContext)).toBe("List")
 });
