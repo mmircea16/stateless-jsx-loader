@@ -14,7 +14,7 @@ test('should compile a simple Hello World', () => {
     let expectedGeneratedCode =
         "import React from 'react'\n" +
         "\n" +
-        "export class Hello extends React.Component {\n" +
+        "export default class Hello extends React.Component {\n" +
         "    render() {\n" +
         "        return <div>Hello World</div>\n" +
         "    }\n" +
