@@ -4,12 +4,17 @@
   "description": "",
   "main": "./loader/stateless-jsx-loader.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "loader-utils": "^1.1.0"
+  },
+  "devDependencies": {
+    "babel-jest": "^22.0.4",
+    "babel-preset-env": "^1.6.1",
+    "jest": "^22.0.4"
   }
 }
