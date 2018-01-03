@@ -1,4 +1,5 @@
 import loader from '../loader/stateless-jsx-loader';
+import fillTemplate from '../loader/jsx-stateless'
 
 test('should compile a simple Hello World', () => {
     let mockContext = {
@@ -19,4 +20,9 @@ test('should compile a simple Hello World', () => {
         "}";
 
     expect(code).toBe(expectedGeneratedCode);
+});
+
+test('should interpolate name and content', () => {
+    let result = fillTemplate("Name: $$class_name$$, Content: $$jsx_content$$", "Planet", "This is planet Earth");
+    expect(result).toBe("Name: Planet, Content: This is planet Earth")
 });

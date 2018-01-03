@@ -1,4 +1,5 @@
 import fs from 'fs';
+import fillTemplate from './jsx-stateless'
 const path = require('path');
 const loaderUtils = require('loader-utils');
 
@@ -11,5 +12,5 @@ module.exports = function (content) {
     let name = loaderUtils.interpolateName(this, "[name]", {});
     name = name.replace('.html', '');
 
-    return classTemplate.replace("$$jsx_content$$", content).replace("$$class_name$$", name);
+    return fillTemplate(classTemplate, name, content);
 };
