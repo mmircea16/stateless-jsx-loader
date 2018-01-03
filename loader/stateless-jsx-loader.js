@@ -1,6 +1,6 @@
-import fs from 'fs';
-import fillTemplate from './jsx-stateless'
-import getFileName from './utils'
+const fs = require('fs');
+const fillTemplate = require('./jsx-stateless')
+const getFileName = require('./utils')
 const path = require('path');
 
 module.exports = function (content) {
@@ -9,7 +9,7 @@ module.exports = function (content) {
 
     let classTemplate = fs.readFileSync(pathToTemplate, 'utf-8');
 
-    let name = getFileName(this);
+    let className = getFileName(this);
 
-    return fillTemplate(classTemplate, name, content);
+    return fillTemplate(classTemplate, className, content);
 };
