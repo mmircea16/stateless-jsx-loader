@@ -1,6 +1,6 @@
-import loader from '../loader/stateless-jsx-loader';
-import fillTemplate from '../loader/jsx-stateless';
-import getFileName from '../loader/utils';
+import loader from '../src/stateless-jsx-loader';
+import fillTemplate from '../src/jsx-stateless';
+import getFileName from '../src/utils';
 
 test('should compile a simple Hello World', () => {
     let mockContext = {
