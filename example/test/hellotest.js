@@ -1,9 +1,9 @@
 import React from 'react'
 import ReactDOMServer from 'react-dom/server'
-import Hey from '../src/Hey.html.jsx'
+import Hello from '../src/Hello.html.jsx'
 
 it('Should render a hello world div', () => {
-    let test = <Hey name="World"/>;
+    let test = <Hello name="World"/>;
 
     let result = ReactDOMServer.renderToStaticMarkup(test);
 
