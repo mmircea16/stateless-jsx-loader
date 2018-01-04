@@ -1,13 +1,13 @@
 {
   "name": "stateless-jsx-loader",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.1.0",
+  "description": "A webpack loader for stateless react components written in pure JSX",
   "main": "./loader/stateless-jsx-loader.js",
   "scripts": {
     "test": "jest"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["webpack loader", "react", "jsx"],
+  "author": "Mircea Moise <mircea.moise@gmail.com>",
   "license": "ISC",
   "dependencies": {
     "loader-utils": "^1.1.0"
