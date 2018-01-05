@@ -9,9 +9,7 @@ module.exports = function (content) {
     this.addDependency(pathToTemplate);
 
     let template = fs.readFileSync(pathToTemplate, 'utf-8');
-
     let className = utils.getFileName(this);
-
     let imports = utils.getCustomComponents(content);
 
     return fillTemplate(template, className, content, imports);
