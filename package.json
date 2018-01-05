@@ -19,6 +19,7 @@
   "author": "Mircea Moise <mircea.moise@gmail.com>",
   "license": "ISC",
   "dependencies": {
+    "acorn-jsx-walk": "^1.0.1",
     "loader-utils": "^1.1.0"
   },
   "devDependencies": {

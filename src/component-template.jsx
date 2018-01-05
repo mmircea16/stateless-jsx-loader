@@ -1,4 +1,4 @@
-import React from 'react'
+$$imports$$
 
 export default class $$class_name$$ extends React.Component {
     render() {

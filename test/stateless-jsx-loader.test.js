@@ -23,6 +23,29 @@ test('should compile a simple Hello World', () => {
     expect(code).toBe(expectedGeneratedCode);
 });
 
+test('should handle higher order stateless component', () => {
+    let mockContext = {
+        addDependency: function(){},
+        resourcePath: "./Greetings.html.jsx"
+    };
+
+    let loaderWithContext = loader.bind(mockContext);
+    let code = loaderWithContext("<div><Hola name='World'/><Hello name='World'/></div>");
+
+    let expectedGeneratedCode =
+        "import Hola from './Hola.html.jsx';\n" +
+        "import Hello from './Hello.html.jsx';\n" +
+        "import React from 'react'\n" +
+        "\n" +
+        "export default class Greetings extends React.Component {\n" +
+        "    render() {\n" +
+        "        return <div><Hola name='World'/><Hello name='World'/></div>\n" +
+        "    }\n" +
+        "}";
+
+    expect(code).toBe(expectedGeneratedCode);
+});
+
 test('should interpolate name and content', () => {
     let result = fillTemplate("Name: $$class_name$$, Content: $$jsx_content$$", "Planet", "This is planet Earth");
     expect(result).toBe("Name: Planet, Content: This is planet Earth")
