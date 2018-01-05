@@ -1,5 +1,6 @@
 const loaderUtils = require('loader-utils');
 const walk = require('acorn-jsx-walk');
+const R = require('ramda');
 
 module.exports = {
     getFileName: function (context) {
@@ -19,6 +20,6 @@ module.exports = {
             }
         });
 
-        return imports;
+        return R.uniq(imports);
     }
 };
