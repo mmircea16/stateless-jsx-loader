@@ -10,6 +10,24 @@ Using the `.html.jsx` extension can be a way to highlight the files containing s
 
 See `example` folder and `webpack.config.js` in that folder for an example of usage. 
 
+### Instalation
+
+```bash
+npm install stateless-jsx-loader
+```
+
+### Usage
+
+Webpack config needs to contain something like:
+```javascript
+{
+    test: /\.html\.jsx$/,
+    use: {
+          loader: 'stateless-jsx-loader'
+    }
+}
+```
+
 ### Testing when using the loader
 
 In order to write tests, webpack loaders need to apply to the code. An example of how to do it:
