@@ -1,0 +1,1 @@
+<div>Konnichiwa {this.props.name}!</div>

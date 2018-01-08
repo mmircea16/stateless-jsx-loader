@@ -13,7 +13,10 @@ describe('retrive custom built components', () => {
         let someJSX = "<Something lang='EN'> <Word/> <Letter/> <apr/> <div>Hello</div> </Something>";
         let components = utils.getCustomComponents(someJSX);
 
-        expect(components).toEqual(expect.arrayContaining(["Something", "Word", "Letter"]));
+        expect(components).toEqual(
+            expect.arrayContaining([{name:"Something", path: "."},
+                                    {name: "Word", path: "."},
+                                    {name: "Letter", path: "."}]));
         expect(components).toHaveLength(3);
     });
 
@@ -21,7 +24,19 @@ describe('retrive custom built components', () => {
         let someJSX = "<div><Something lang='EN'/> <Something/> <Word></Word></div>";
         let components = utils.getCustomComponents(someJSX);
 
-        expect(components).toEqual(expect.arrayContaining(["Something", "Word"]));
+        expect(components).toEqual(
+            expect.arrayContaining([{name:"Something", path: "."},
+                                    {name: "Word", path: "."}]));
         expect(components).toHaveLength(2);
+    });
+
+    test('should handle components from other folders', () => {
+        let someJSX = "<div> <Something __jsxpath='./path/to/component'/> </div>";
+        let components = utils.getCustomComponents(someJSX);
+
+        expect(components).toEqual(
+            expect.arrayContaining([{name:"Something", path: "./path/to/component"}]));
+
+        expect(components).toHaveLength(1);
     });
 });

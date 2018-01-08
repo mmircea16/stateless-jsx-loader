@@ -43,3 +43,28 @@ test('should handle higher order stateless component', () => {
 
     expect(code).toBe(expectedGeneratedCode);
 });
+
+test('should handle higher order stateless component from other folders', () => {
+    let mockContext = {
+        addDependency: function(){},
+        resourcePath: "./Greetings.html.jsx"
+    };
+
+    let loaderWithContext = loader.bind(mockContext);
+    let code = loaderWithContext(
+        "<div><Hola __jsxpath='./spain' name='World'/><Hello name='World'/><Namaste __jsxpath='./hindi'/></div>");
+
+    let expectedGeneratedCode =
+        "import Hola from './spain/Hola.html.jsx';\n" +
+        "import Hello from './Hello.html.jsx';\n" +
+        "import Namaste from './hindi/Namaste.html.jsx';\n" +
+        "import React from 'react'\n" +
+        "\n" +
+        "export default class Greetings extends React.Component {\n" +
+        "    render() {\n" +
+        "        return <div><Hola name='World'/><Hello name='World'/><Namaste/></div>\n" +
+        "    }\n" +
+        "}";
+
+    expect(code).toBe(expectedGeneratedCode);
+});
