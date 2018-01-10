@@ -11,7 +11,7 @@ test('should retrieve the file name without extensions', () => {
 describe('retrive custom built components', () => {
     test('should handle simple list', () => {
         let someJSX = "<Something lang='EN'> <Word/> <Letter/> <apr/> <div>Hello</div> </Something>";
-        let components = utils.getCustomComponents(someJSX);
+        let components = utils.getCustomComponents(someJSX, {importAttr: "somePath", defaultPath: "."});
 
         expect(components).toEqual(
             expect.arrayContaining([{name:"Something", path: "."},
@@ -22,7 +22,7 @@ describe('retrive custom built components', () => {
 
     test('should handle duplicates', () => {
         let someJSX = "<div><Something lang='EN'/> <Something/> <Word></Word></div>";
-        let components = utils.getCustomComponents(someJSX);
+        let components = utils.getCustomComponents(someJSX, {importAttr: "somePath", defaultPath: "."});
 
         expect(components).toEqual(
             expect.arrayContaining([{name:"Something", path: "."},
@@ -31,8 +31,8 @@ describe('retrive custom built components', () => {
     });
 
     test('should handle components from other folders', () => {
-        let someJSX = "<div> <Something __jsxpath='./path/to/component'/> </div>";
-        let components = utils.getCustomComponents(someJSX);
+        let someJSX = "<div> <Something somePath='./path/to/component'/> </div>";
+        let components = utils.getCustomComponents(someJSX, {importAttr: "somePath", defaultPath: "."});
 
         expect(components).toEqual(
             expect.arrayContaining([{name:"Something", path: "./path/to/component"}]));
