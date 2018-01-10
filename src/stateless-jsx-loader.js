@@ -12,7 +12,7 @@ module.exports = function (content) {
     let className = utils.getFileName(this);
     let imports = utils.getCustomComponents(content);
 
-    content = transformer.removeExtraAttributes(content);
+    content = transformer.removeExtraAttributes(content, "__jsxpath");
 
     return fillTemplate(template, className, content, imports);
 };

@@ -1,8 +1,8 @@
 const R = require('ramda');
 
 module.exports = {
-    removeExtraAttributes: function (content) {
-        const JSXPATH_REGEX = /\s__jsxpath=['"].*?['"]/g;
+    removeExtraAttributes: function (content, attribute) {
+        const JSXPATH_REGEX = new RegExp("\\s"+attribute+"=['\"].*?['\"]","g");
         return R.replace(JSXPATH_REGEX, '', content);
     }
 };
