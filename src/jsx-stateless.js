@@ -1,16 +1,16 @@
 const R = require('ramda');
 
 module.exports = function fillTemplate(classTemplate, name, content, imports = []) {
-    const importTemplate = "import $$name$$ from '$$path$$/$$name$$.html.jsx';";
-    const reactImport = "import React from 'react'";
+    const IMPORT_TEMPLATE = "import $$name$$ from '$$path$$/$$name$$.html.jsx';";
+    const REACT_IMPORT = "import React from 'react'";
 
     let importStatements = imports.map(
         aImport => {
-            let withName = R.replace(/\$\$name\$\$/g, aImport.name, importTemplate);
+            let withName = R.replace(/\$\$name\$\$/g, aImport.name, IMPORT_TEMPLATE);
             return R.replace(/\$\$path\$\$/g, aImport.path, withName);
         });
 
-    importStatements.push(reactImport);
+    importStatements.push(REACT_IMPORT);
 
     return classTemplate
              .replace("$$class_name$$", name)

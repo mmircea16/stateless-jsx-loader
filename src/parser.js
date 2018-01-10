@@ -8,6 +8,10 @@ function importFor(name, path) {
     }
 }
 
+function capitalized(name) {
+    return name[0] === name[0].toUpperCase();
+}
+
 module.exports = {
     getCustomComponents: function (content, options) {
         let imports = [];
@@ -15,10 +19,10 @@ module.exports = {
         walk.default(content, {
             JSXElement(node) {
                 let name = node.openingElement.name.name;
-                if (name[0] === name[0].toUpperCase()) {
+                if (capitalized(name)) {
                     let attrs = node.openingElement.attributes;
-                    let jsxPathAttrs = R.filter(attr => attr.name.name === options.importAttr, attrs);
-                    let path = jsxPathAttrs[0] ? jsxPathAttrs[0].value.value : options.defaultPath;
+                    let importPathAttrs = R.filter(attr => attr.name.name === options.importAttr, attrs);
+                    let path = importPathAttrs[0] ? importPathAttrs[0].value.value : options.defaultPath;
 
                     imports.push(importFor(name, path));
                 }
