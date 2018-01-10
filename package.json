@@ -1,6 +1,6 @@
 {
   "name": "stateless-jsx-loader",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "A webpack loader for stateless react components written in pure JSX",
   "main": "./src/stateless-jsx-loader.js",
   "homepage": "https://github.com/mmircea16/stateless-jsx-loader",
