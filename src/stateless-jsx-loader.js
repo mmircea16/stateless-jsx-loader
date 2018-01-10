@@ -3,6 +3,7 @@ const fillTemplate = require('./jsx-stateless');
 const utils = require('./utils');
 const path = require('path');
 const transformer = require('./transformer');
+const parser = require('./parser');
 
 const IMPORT_PATH_ATTR = '__jsxpath';
 const DEFAULT_PATH = '.';
@@ -13,7 +14,7 @@ module.exports = function (content) {
 
     let template = fs.readFileSync(pathToTemplate, 'utf-8');
     let className = utils.getFileName(this);
-    let imports = utils.getCustomComponents(content, {importAttr: IMPORT_PATH_ATTR, defaultPath: DEFAULT_PATH});
+    let imports = parser.getCustomComponents(content, {importAttr: IMPORT_PATH_ATTR, defaultPath: DEFAULT_PATH});
 
     content = transformer.removeExtraAttributes(content, IMPORT_PATH_ATTR);
 
