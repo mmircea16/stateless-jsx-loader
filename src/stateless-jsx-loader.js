@@ -16,7 +16,7 @@ module.exports = function (content) {
     let className = utils.getFileName(this);
     let imports = parser.getCustomComponents(content, {importAttr: IMPORT_PATH_ATTR, defaultPath: DEFAULT_PATH});
 
-    content = transformer.removeExtraAttributes(content, IMPORT_PATH_ATTR);
+    content = transformer.removeAttribute(content, IMPORT_PATH_ATTR);
 
     return fillTemplate(template, className, content, imports);
 };
