@@ -1,3 +1,4 @@
+## DEPRECATED - Please use https://www.npmjs.com/package/babel-stateless-jsx instead
 ## React stateless component loader
 
 This gives the ability to write pure JSX for stateless components, eliminating all the boilerplate needed to write one. Only writing JSX in a file like below is enough to define a stateless component:
